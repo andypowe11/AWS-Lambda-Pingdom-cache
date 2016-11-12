@@ -1,0 +1,1 @@
+# AWS Lambda Pingdom cache
