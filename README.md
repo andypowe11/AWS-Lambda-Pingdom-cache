@@ -9,7 +9,7 @@ By default, the DynamoDB table is called 'pingdom-cache'.
 The fields stored in the table are as follows:
 
 | Field | Description |
-+-------+-------------+
+|-------|-------------|
 | id | |
 | availability1day | |
 | availability1month | |
