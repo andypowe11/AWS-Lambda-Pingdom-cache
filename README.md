@@ -4,7 +4,7 @@ An AWS Lambda function, written in Python, to create a small cache of informatio
 
 More information about Pingdom is available from https://pingdom.com/. More information about the Pingdom API is at https://www.pingdom.com/resources/api.
 
-By default, the DynamoDB table is called 'pingdom-cache'.
+Edit the 4 variables at the top of the function to include your Pindom API credentials. By default, the DynamoDB table is called 'pingdom-cache'.
 
 The fields stored in the table are as follows:
 
