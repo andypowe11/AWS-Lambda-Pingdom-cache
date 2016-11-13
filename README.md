@@ -9,18 +9,18 @@ By default, the DynamoDB table is called 'pingdom-cache'.
 The fields stored in the table are as follows:
 
 | Field | Description |
-
-- id
-- availability1day
-- availability1month
-- availability1week
-- availability3months
-- cacheupdate
-- lasterrorend
-- lasterrorstart
-- lasterrortime
-- name
-- status
-- type
++-------+-------------+
+| id | |
+| availability1day | |
+| availability1month | |
+| availability1week | |
+| availability3months | |
+| cacheupdate | |
+| lasterrorend | |
+| lasterrorstart | |
+| lasterrortime | |
+| name | |
+| status | |
+| type | |
 
 Note that the function includes the https://github.com/drcraig/python-restful-pingdom module written by @drcraig (see https://github.com/drcraig).
