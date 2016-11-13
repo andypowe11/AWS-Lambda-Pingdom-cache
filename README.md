@@ -1,6 +1,6 @@
 # AWS Lambda Pingdom cache
 
-An AWS Lambda function, written in Python, to create a small cache of information from the Pingom API and regularly store it in a DynamoDB database table. The intention is to call this function every minute or every 5 minutes.
+An AWS Lambda function, written in Python, to create a small cache of information from the Pingom API and regularly store it in a DynamoDB database table. The intention is to call this function every minute or every 5 minutes via a CloudWatch Events Schedule.
 
 More information about Pingdom is available from https://pingdom.com/. More information about the Pingdom API is at https://www.pingdom.com/resources/api.
 
@@ -22,4 +22,4 @@ The fields stored in the table are as follows:
 | status | 'up', 'down' or 'unknown' |
 | type | 'customer', 'external' or 'internal' (depending on presence of tags) |
 
-Note that the function includes a verbatim copy of the https://github.com/drcraig/python-restful-pingdom module written by @drcraig (see https://github.com/drcraig).
+Note that this function includes a verbatim copy of the https://github.com/drcraig/python-restful-pingdom module written by @drcraig (see https://github.com/drcraig).
