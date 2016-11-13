@@ -10,17 +10,16 @@ The fields stored in the table are as follows:
 
 | Field | Description |
 |-------|-------------|
-| id | |
-| availability1day | |
-| availability1month | |
-| availability1week | |
-| availability3months | |
-| cacheupdate | |
-| lasterrorend | |
-| lasterrorstart | |
-| lasterrortime | |
-| name | |
-| status | |
-| type | |
+| id | Identifier of the Pingdom check |
+| availability1day | Availability over the last 24 hours (stored as an integer between 0 and 1000, i.e. 99.95% is stored as 9995) |
+| availability1month | Availability over the past 30 days (see above) |
+| availability1week | Availability over the past 7 days (see above) |
+| availability3months | Availability over the past 90 days (see above) |
+| cacheupdate | Time of last cache update (stored as seconds since the epoch) |
+| lasterrorend | Time that the last error condition ended (see above) |
+| lasterrorstart | Time that the last error condition started (see above) |
+| name | Name of the Pingdom check |
+| status | 'up', 'down' or 'unknown' |
+| type | 'customer', 'external' or 'internal' (depending on presence of tags) |
 
-Note that the function includes the https://github.com/drcraig/python-restful-pingdom module written by @drcraig (see https://github.com/drcraig).
+Note that the function includes a verbatim copy of the https://github.com/drcraig/python-restful-pingdom module written by @drcraig (see https://github.com/drcraig).
