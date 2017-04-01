@@ -63,7 +63,10 @@ def lambda_handler(event, context):
                 'id' : id
             }
         )
-        cacheitem = response['Item']
+        if 'Item' in response:
+            cacheitem = response['Item']
+        else:
+            cacheitem = {}
         now = int(time.time())
         onehour = 60*60
         oneday = 24*onehour
@@ -78,19 +81,31 @@ def lambda_handler(event, context):
             starttime = now - oneday
             uptime = p.method(url='summary.average/'+id, method='GET',
                 parameters={'from':str(starttime),'to':str(now),'includeuptime':'true'})['summary']
-            availability1day = uptime['status']['totalup'] * 10000 / (uptime['status']['totalup'] + uptime['status']['totaldown'])
+            totaltime = uptime['status']['totalup'] + uptime['status']['totaldown']
+            if totaltime == 0:
+                totaltime = 1
+            availability1day = uptime['status']['totalup'] * 10000 / totaltime
             starttime = now - oneweek
             uptime = p.method(url='summary.average/'+id, method='GET',
                 parameters={'from':str(starttime),'to':str(now),'includeuptime':'true'})['summary']
-            availability1week = uptime['status']['totalup'] * 10000 / (uptime['status']['totalup'] + uptime['status']['totaldown'])
+            totaltime = uptime['status']['totalup'] + uptime['status']['totaldown']
+            if totaltime == 0:
+                totaltime = 1
+            availability1week = uptime['status']['totalup'] * 10000 / totaltime
             starttime = now - onemonth
             uptime = p.method(url='summary.average/'+id, method='GET',
                 parameters={'from':str(starttime),'to':str(now),'includeuptime':'true'})['summary']
-            availability1month = uptime['status']['totalup'] * 10000 / (uptime['status']['totalup'] + uptime['status']['totaldown'])
+            totaltime = uptime['status']['totalup'] + uptime['status']['totaldown']
+            if totaltime == 0:
+                totaltime = 1
+            availability1month = uptime['status']['totalup'] * 10000 / totaltime
             starttime = now - threemonths
             uptime = p.method(url='summary.average/'+id, method='GET',
                 parameters={'from':str(starttime),'to':str(now),'includeuptime':'true'})['summary']
-            availability3months = uptime['status']['totalup'] * 10000 / (uptime['status']['totalup'] + uptime['status']['totaldown'])
+            totaltime = uptime['status']['totalup'] + uptime['status']['totaldown']
+            if totaltime == 0:
+                totaltime = 1
+            availability3months = uptime['status']['totalup'] * 10000 / totaltime
             states = p.method(url='summary.outage/'+id, method='GET',
                 parameters={'from':str(starttime),'to':str(now),'order':'desc'})['summary']['states']
             lasterrorstart = 0
